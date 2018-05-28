@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.myapp.mobile" version="2.25" xmlns="http://www.w3.org/ns/widgets">
-  <name>Gullfoss App Beta</name>
+  <name>Gullfoss App B</name>
   <description>zzzZZ</description>
   <preference name="phonegap-version" value="cli-6.5.0" />
   <preference name="permissions" value="none" />
