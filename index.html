@@ -1,0 +1,434 @@
+<!doctype html>
+<html>
+    <head>
+
+        <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="icon" href="gray.png">
+
+        <title>Gullfoss App</title>
+    
+        <link rel="stylesheet" type="text/css" href="style.css">
+
+        <script src="script.js"></script>
+    
+    </head>
+
+
+    <body>
+
+        <script>
+
+            var sandwiches = ['Bagels', 'Ham & Cheese Baguette (dark)', 'Ham & Cheese Baguette', 'Tomato & Mozzarella Panini', 'Chicken Panini', 'Chicken Baguette', 'Salami Baguette', 'Salami Baguette (dark)', 'Flagets'];
+
+            var packedSandwiches = ['Roast Beef', 'Tuna', 'Vegetarian', 'Ham & Cheese Toast'];
+
+            var cakes = ['caramel', 'black forest', 'cheese', 'dark', 'cream & caramel', 'raspberry', 'brownies', 'coconut', '..cream', 'apple pie', 'peacan pie', 'caramel apple pie'];
+        
+        </script>
+
+
+
+
+
+
+
+
+
+        <script>
+            // sandwiches
+            document.write("<table> <tr> <th>SANDWICHES</th><th> ~ </th> </tr>");
+            for (var i = 0; i < sandwiches.length; i++) {
+                document.write("<tr> <td>" + sandwiches[i] + "</td><td id='cellSandwiches" + i + "'><input type='number' step='0.5' id='inputSandwiches" + i + "' placeholder='" + i + "'></td> </tr>");
+            }
+            document.write("</table>");
+
+
+            // packed sandwiches
+            document.write("<table> <tr> <th>PACKED SANDWICHES</th><th> * </th> </tr>")
+            for (var i = 0; i < packedSandwiches.length; i++) {
+                document.write("<tr> <td>" + packedSandwiches[i] + "</td><td id='cellPacked" + i + "'><input type='number' id='inputPacked" + i + "' placeholder='" + i + "'></td> </tr>");
+            }
+            document.write("</table>");
+
+
+            // salads
+            document.write("<br>   <table> <tr> <td style='color: green'>Salads</td><td id='cellSalads'><input type='number' id='inputSalads'></td> </tr> </table>");
+
+/*
+            // cakes
+            document.write("<table> <tr> <th>CAKES</th><th> * </th> </tr>")
+            for (var i = 0; i < cakes.length; i++) {
+                document.write("<tr> <td>" + cakes[i] + "</td><td id='cellCakes" + i + "'><input id='inputCakes" + i + "' placeholder='" + i + "'></td> </tr>");
+            }
+            document.write("</table>");
+*/
+
+        </script>
+
+
+
+
+
+        <button type="button" onclick="myFunction()">Submit</button>
+
+
+
+
+        <script>
+
+            
+
+            function myFunction() {
+
+                // ingredients: vagetables (for sandwiches)
+                var tomatoes = 0;
+                var peppers = 0;
+                var cucumbers = 0;
+                var onions = 0;
+
+                // ingredients: vegetables (for packed sandwiches)
+                var tomatoesPacked = 0;
+                var peppersPacked = 0;
+                var cucumbersPacked = 0;
+
+
+                // ingredients: other
+                var mozzarella = 0;
+                var chickenForPanini = 0;
+                var chickenForBaguettes = 0;
+
+
+
+                // breads
+                var baguettes = 0;
+                var fitness = 0;
+                var bagels = 0;
+                var flagets = 0;
+
+
+
+                // Get the value of the input field with id="inputSandwiches..." and set that value to the cell with the id="cellSandwiches..."
+                // variable used to store the values inputed
+                var valueSandwiches = 0;                
+                // SANDWICHES
+                // get the value inputed for every sandwich from the `sandwiches` array using a for loop
+                for (var i = 0; i < sandwiches.length; i++) {
+
+                    // set the value of the variable `valueSandwiches` to the value inputed
+                    if (document.getElementById("inputSandwiches" + i).value == 0.5 || document.getElementById("inputSandwiches" + i).value == 1 || document.getElementById("inputSandwiches" + i).value == 1.5 || document.getElementById("inputSandwiches" + i).value == 2 || document.getElementById("inputSandwiches" + i).value == 2.5 || document.getElementById("inputSandwiches" + i).value == 3 || document.getElementById("inputSandwiches" + i).value == 3.5 || document.getElementById("inputSandwiches" + i).value == 4 || document.getElementById("inputSandwiches" + i).value == 4.5 || document.getElementById("inputSandwiches" + i).value == 5) {
+                        
+                        valueSandwiches = document.getElementById("inputSandwiches" + i).value;
+                    
+                    } else {
+
+                        valueSandwiches = 0;
+
+                    }
+
+                    // write the value inputed in the SANDWICHES table
+                    document.getElementById("cellSandwiches" + i).innerHTML = valueSandwiches;
+
+
+                    // add up to ingredients values, depending on the sandwich
+                    if (sandwiches[i] == 'Bagels') {
+                        tomatoes += (3 * 12 * valueSandwiches);
+                        onions += (1 * valueSandwiches);
+                    } else if (sandwiches[i] == 'Tomato & Mozzarella Panini') {
+                        if (valueSandwiches == 1 || valueSandwiches == 2 || valueSandwiches == 3 || valueSandwiches == 4 || valueSandwiches == 5) {
+                            tomatoes += (3 * 9 * valueSandwiches);
+                            mozzarella += (3 * 9 * valueSandwiches);
+                        } else if (valueSandwiches == 0.5 || valueSandwiches == 1.5 || valueSandwiches == 2.5 || valueSandwiches == 3.5 || valueSandwiches == 4.5) {
+                            tomatoes += (3 * ((9 * valueSandwiches) + 0.5));
+                            mozzarella += (3 * ((9 * valueSandwiches) + 0.5));
+                        }
+                    } else if (sandwiches[i] == 'Chicken Panini') {
+                        if (valueSandwiches == 1 || valueSandwiches == 2 || valueSandwiches == 3 || valueSandwiches == 4 || valueSandwiches == 5) {
+                            peppers += (2 * 9 * valueSandwiches);
+                        } else if (valueSandwiches == 0.5 || valueSandwiches == 1.5 || valueSandwiches == 2.5 || valueSandwiches == 3.5 || valueSandwiches == 4.5) {
+                            peppers += (2 * ((9 * valueSandwiches) + 0.5));
+                        }
+                    } else if (sandwiches[i] == 'Salami Baguette') {
+                        tomatoes += (4 * 7 * valueSandwiches);
+                        cucumbers += (4 * 7 * valueSandwiches);
+                        peppers += (2 * 7 * valueSandwiches);
+                    } else if (sandwiches[i] == 'Salami Baguette (dark)') {
+                        tomatoes += (4 * 8 * valueSandwiches);
+                        cucumbers += (4 * 8 * valueSandwiches);
+                        peppers += (2 * 8 * valueSandwiches);
+                    } else if (sandwiches[i] == 'Flagets') {
+                        tomatoes += (3 * 8 * valueSandwiches);
+                    }
+
+
+
+                    // add up to breads values, depending on the sandwich
+                    if (sandwiches[i] == 'Bagels') {
+                        bagels += (1 * valueSandwiches);
+                    } else if (sandwiches[i] == 'Ham & Cheese Baguette (dark)') {
+                        fitness += (1 * valueSandwiches);
+                    } else if (sandwiches[i] == 'Ham & Cheese Baguette') {
+                        baguettes += (1 * valueSandwiches);
+                    } else if (sandwiches[i] == 'Chicken Baguette') {
+                        baguettes += (1 * valueSandwiches);
+                    } else if (sandwiches[i] == 'Salami Baguette') {
+                        baguettes += (1 * valueSandwiches);
+                    } else if (sandwiches[i] == 'Salami Baguette (dark)') {
+                        fitness += (1 * valueSandwiches);
+                    } else if (sandwiches[i] == 'Flagets') {
+                        flagets += (1 * valueSandwiches);
+                    } 
+
+
+                }
+
+
+
+
+                // Get the value of the input field with id="inputPacked..." and set that value to the cell with the id="cellPacked..."
+                // variable used to store the values inputed
+                var valueSandwichesPacked = 0;                
+                // PACKED SANDWICHES
+                // get the value inputed for every packed sandwich from the `packedSandwiches` array using a for loop
+                for (var i = 0; i < packedSandwiches.length; i++) {
+
+                    // set the value of the variable `valueSandwichesPacked` to the value inputed
+                    valueSandwichesPacked = document.getElementById("inputPacked" + i).value;
+                    
+                    // write the value inputed in the PACKED SANDWICHES table
+                    document.getElementById("cellPacked" + i).innerHTML = valueSandwichesPacked;
+
+
+                    // add up to ingredients values, depending on the packed sandwich
+                    if (packedSandwiches[i] == 'Roast Beef') {
+                        peppersPacked += (2 * valueSandwichesPacked);
+                    } else if (packedSandwiches[i] == 'Vegetarian') {
+                        tomatoesPacked += (4 * valueSandwichesPacked);
+                        peppersPacked += (2 * valueSandwichesPacked);
+                        cucumbersPacked += (4 * valueSandwichesPacked);
+                    }
+
+
+
+
+                }
+
+
+
+
+                var valueSalads = 0;
+
+                valueSalads = document.getElementById("inputSalads").value;
+
+                document.getElementById("cellSalads").innerHTML = valueSalads;
+
+
+
+
+
+                // values of vegetables in total
+                tomatoesTotal = tomatoes + tomatoesPacked;
+                peppersTotal = peppers + peppersPacked;
+                cucumbersTotal = cucumbers + cucumbersPacked;
+                onionsTotal = onions;
+
+
+
+
+
+                // set the last value of every breads variable in the cell with the id="...ID"
+                document.getElementById("baguettesID").innerHTML = baguettes;
+                document.getElementById("fitnessID").innerHTML = fitness;
+                document.getElementById("bagelsID").innerHTML = bagels;
+                document.getElementById("flagetsID").innerHTML = flagets;
+
+
+
+
+
+
+                // set the last value of every vegetables variable in the cell with the id="...ID"
+                document.getElementById("tomatoesIDpacked").innerHTML = tomatoesPacked + " (~" + Math.ceil(tomatoesPacked / 6.5) + ")";
+                document.getElementById("peppersIDpacked").innerHTML = peppersPacked;
+                document.getElementById("cucumbersIDpacked").innerHTML = cucumbersPacked;
+
+
+
+
+
+
+                
+
+                // set the last value of every vegetables variable in the cell with the id="...ID"
+                document.getElementById("tomatoesID").innerHTML = tomatoes + " (~" + Math.ceil(tomatoes / 6.5) + ")";
+                document.getElementById("peppersID").innerHTML = peppers;
+                document.getElementById("cucumbersID").innerHTML = cucumbers;
+                document.getElementById("onionsID").innerHTML = onions;
+
+
+
+
+
+
+                // .... total
+                document.getElementById("tomatoesIDtotal").innerHTML = tomatoesTotal + " (~" + Math.ceil(tomatoesTotal / 6.5) + ")";
+                document.getElementById("peppersIDtotal").innerHTML = peppersTotal;
+                document.getElementById("cucumbersIDtotal").innerHTML = cucumbersTotal;
+                document.getElementById("onionsIDtotal").innerHTML = onionsTotal;
+
+                document.getElementById("mozzarellaID").innerHTML = mozzarella;
+
+
+
+
+
+
+
+
+                
+
+
+
+
+
+
+
+
+
+            }
+
+
+        </script>
+        
+
+        <br>
+        <br>
+        <hr>
+        <hr>
+        <br>
+
+
+        <table>
+            <tr>
+                <th class="th-breads"> `BREADS` </th>
+                <th class="th-breads"> ~ </th>
+            </tr>
+            <tr> 
+                <td>baguettes</td>
+                <td id="baguettesID"></td>
+            </tr>
+            <tr> 
+                <td><b>baguettes (dark)</b></td>
+                <td id="fitnessID"></td>
+            </tr>
+            <tr> 
+                <td style="color: brown">bagels</td>
+                <td id="bagelsID"></td>
+            </tr>
+            <tr> 
+                <td>flagets</td>
+                <td id="flagetsID"></td>
+            </tr>
+        </table>
+
+
+
+        <br>
+        <hr>
+        <br>
+
+
+
+
+
+
+        <table>
+            <tr>
+                <th class="th-vegetables"> `vegetables for SANDWICHES` </th>
+                <th class="th-vegetables"> ~ </th>
+            </tr>
+            <tr> 
+                <td style="color: red">tomatoes</td>
+                <td id="tomatoesIDtotal"></td>
+            </tr>
+            <tr> 
+                <td>peppers</td>
+                <td id="peppersIDtotal"></td>
+            </tr>
+            <tr> 
+                <td style="color: green">cucumbers</td>
+                <td id="cucumbersIDtotal"></td>
+            </tr>
+            <tr>
+                <td  style="color: purple">onions</td>
+                <td id="onionsIDtotal"></td>
+            </tr>
+        </table>
+
+
+
+        <table>
+            <tr>
+                <td>mozzarella</td>
+                <td id="mozzarellaID"></td>
+            </tr>
+        </table>
+
+
+
+        <br>
+        <hr>
+        <br>
+
+
+
+        <table>
+            <tr>
+                <th class="th-packed"> `packed sandwiches` </th>
+                <th class="th-packed"> ~ </th>
+            </tr>
+            <tr> 
+                <td style="color: red">tomatoes</td>
+                <td id="tomatoesIDpacked"></td>
+            </tr>
+            <tr> 
+                <td>peppers</td>
+                <td id="peppersIDpacked"></td>
+            </tr>
+            <tr> 
+                <td  style="color: green">cucumbers</td>
+                <td id="cucumbersIDpacked"></td>
+            </tr>
+        </table>
+
+
+
+
+
+        <table style="border: 1px solid black;">
+            <tr>
+                <th class="th-unpacked"> `sandwiches` </th>
+                <th class="th-unpacked"> ~ </th>
+            </tr>
+            <tr> 
+                <td style="color: red">tomatoes</td>
+                <td id="tomatoesID"></td>
+            </tr>
+            <tr> 
+                <td>peppers</td>
+                <td id="peppersID"></td>
+            </tr>
+            <tr> 
+                <td style="color: green">cucumbers</td>
+                <td id="cucumbersID"></td>
+            </tr>
+            <tr> 
+                <td style="color: purple">onions</td>
+                <td id="onionsID"></td>
+            </tr>
+        </table>
+
+
+
+    </body>
+</html> 

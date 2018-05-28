@@ -1,0 +1,109 @@
+
+@media (max-width: 600px) {
+	table {
+		width: 100%;
+	}
+}
+
+input {
+	width: 50px;
+}
+
+table, td, th {
+	border: 2px solid white;
+	border-collapse: collapse;
+	font-family: sans-serif;
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
+
+
+th {
+	text-align: center;
+	background: #9B86C1;
+	color: #1B102E;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
+td {
+	text-align: center;
+	padding: 2px;
+	height: 25px;
+}
+
+tr:nth-child(odd) {
+	background: rgb(240, 240, 240);
+}
+tr:nth-child(even) {
+	background: white;
+}
+
+
+input[type=number] {
+	width: 50px;
+}
+input[type=submit] {
+	margin: 10px;
+}
+
+button {
+	margin: 10px;
+}
+
+
+
+.th-breads {
+	text-align: center;
+	background: #ddc673;
+	color: #282414;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
+
+.th-vegetables {
+	text-align: center;
+	background: rgb(91, 175, 89);
+	color: white;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
+
+.th-packed {
+	text-align: center;
+	background: black;
+	color: grey;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
+
+.th-unpacked {
+	text-align: center;
+	background: grey;
+	color: white;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
+
+
+
+
+
+
+.imag-column {
+	background-color: white;
+	padding-right: 6px;
+}
+.checkbox-column {
+	background-color: white;
+	padding-left: 6px;
+}
